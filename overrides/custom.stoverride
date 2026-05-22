@@ -122,6 +122,14 @@ rule-providers:
     format: yaml
     type: http
 
+  apple_music:
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AppleMusic/AppleMusic.yaml
+    path: ./ruleset/apple_music.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+
   microsoft:
     url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/microsoft.yaml
@@ -232,6 +240,10 @@ rules: #!replace
   - RULE-SET,claude,AIGC
 
   # Apple 全部直连
+  - RULE-SET,apple_music,DIRECT
+  - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
+  - DOMAIN-SUFFIX,itunes.com,DIRECT
+  - DOMAIN-SUFFIX,itunesconnect.apple.com,DIRECT
   - RULE-SET,apple,DIRECT
 
   # Microsoft 大部分直连
