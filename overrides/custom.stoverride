@@ -130,6 +130,14 @@ rule-providers:
     format: yaml
     type: http
 
+  systemota:
+    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SystemOTA/SystemOTA.yaml
+    path: ./ruleset/systemota.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
+    type: http
+
   microsoft:
     url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/microsoft.yaml
@@ -244,6 +252,7 @@ rules: #!replace
   - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
   - DOMAIN-SUFFIX,itunes.com,DIRECT
   - DOMAIN-SUFFIX,itunesconnect.apple.com,DIRECT
+  - RULE-SET,systemota,DIRECT
   - RULE-SET,apple,DIRECT
 
   # Microsoft 大部分直连
