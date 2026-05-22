@@ -20,7 +20,11 @@ Stash iOS 使用的主覆写文件。
 
 ## 修改后检查
 
-1. `rules` 中引用的策略组都存在。
-2. `rules` 中引用的 rule-provider 都存在。
-3. `copilot` 规则位于 `microsoft` 规则之前。
-4. Stash raw 链接仍然指向 `.stoverride` 文件。
+默认做轻量检查，避免每次小改都重复完整校验。
+
+- 只修改 `name`、`desc`、注释或文档时，不需要完整检查规则引用。
+- 修改 `rule-providers`、`proxy-groups` 或 `rules` 时，再检查：
+  1. `rules` 中引用的策略组都存在。
+  2. `rules` 中引用的 rule-provider 都存在。
+  3. `copilot` 规则位于 `microsoft` 规则之前。
+  4. Stash raw 链接仍然指向 `.stoverride` 文件。
