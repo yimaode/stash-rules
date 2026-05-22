@@ -122,14 +122,6 @@ rule-providers:
     format: yaml
     type: http
 
-  apple_music:
-    url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AppleMusic/AppleMusic.yaml
-    path: ./ruleset/apple_music.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
-    type: http
-
   systemota:
     url: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SystemOTA/SystemOTA.yaml
     path: ./ruleset/systemota.yaml
@@ -247,13 +239,20 @@ rules: #!replace
   - RULE-SET,openai,AIGC
   - RULE-SET,claude,AIGC
 
-  # Apple 全部直连
-  - RULE-SET,apple_music,DIRECT
-  - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
+  # Apple 强制直连兜底
+  - DOMAIN-SUFFIX,apple.com,DIRECT
+  - DOMAIN-SUFFIX,icloud.com,DIRECT
+  - DOMAIN-SUFFIX,icloud-content.com,DIRECT
+  - DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+  - DOMAIN-SUFFIX,mzstatic.com,DIRECT
   - DOMAIN-SUFFIX,itunes.com,DIRECT
-  - DOMAIN-SUFFIX,itunesconnect.apple.com,DIRECT
-  - RULE-SET,systemota,DIRECT
+  - DOMAIN-SUFFIX,aaplimg.com,DIRECT
+
+  # Apple 综合规则集
   - RULE-SET,apple,DIRECT
+
+  # Apple 系统更新 / OTA 专项补充
+  - RULE-SET,systemota,DIRECT
 
   # Microsoft 大部分直连
   # 注意：必须放在 copilot 后面，否则 Copilot 会被 Microsoft 规则提前直连
