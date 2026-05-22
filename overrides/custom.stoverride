@@ -1,4 +1,4 @@
-name: Replace Subscription Groups
+name: 定制覆写
 desc: 完全替换订阅自带策略组，并使用本覆写规则
 
 rule-providers:
